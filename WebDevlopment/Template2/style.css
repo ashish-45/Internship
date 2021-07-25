@@ -1,0 +1,137 @@
+
+/* bannner start */
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+#banner{
+    background-image: url("https://cdn.pixabay.com/photo/2020/01/15/17/38/fireworks-4768501_960_720.jpg");
+    background-size: cover;
+    height: 100%;
+    box-shadow: 2px 2px;
+}
+
+.fa-bars{
+    color: #fff;
+    font-size: 30px;
+}
+
+.nav-item, .nav-link{
+    margin-right: 45px;
+}
+
+.fa-twitter, .fa-linkedin-in, .fa-youtube, .fa-instagram {
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+
+.fa-twitter:hover{
+    background-color: sandybrown;
+}
+
+.fa-linkedin-in:hover{
+    background-color: sandybrown;
+}
+
+.fa-youtube:hover{
+    background-color: sandybrown;
+}
+
+.fa-instagram:hover{
+    background-color: sandybrown;
+}
+
+.navbar-toggler-icon{
+    color: #fff;
+}
+
+.center{
+    padding: 240px 0;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+
+/* banner end */
+
+
+
+/* contact Start */
+
+#contact{
+    background-color: black;
+    padding: 20px;
+}
+
+.fa-map-marker-alt,.fa-clock, .fa-phone-alt,.fa-envelope{
+    font-size: 50px;
+    color: pink;
+}
+/* COntact End */
+
+
+
+/* Footer start */
+#footer{
+    background-color: black;
+}
+
+.circle {
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid white;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .c2 {
+    width: 60px;
+    height: 60px;
+    border-color:white;
+  }
+  
+  .c3 {
+    width: 40px;
+    height: 40px;
+    border-color: white;
+    background-color: white;
+  }
+
+  .footer-section{
+      margin: auto;
+      color: white;
+      text-align: center;
+      margin-top: 30px;
+  }
+
+  .footer-logo{
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+  }
+
+  .copyright{
+      color: tomato;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 70px;
+  }
+  
+/* Footer End */
+
+
+@media only screen and (max-width: 600px) {
+    .fa-map-marker-alt,.fa-clock, .fa-phone-alt,.fa-envelope{
+      font-size: 40px;
+    }
+  }
+
