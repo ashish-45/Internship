@@ -1,3 +1,74 @@
+<?php
+
+include 'db.php';
+
+use PHPMailer\PHPMailer\PHPMailer; 
+use PHPMailer\PHPMailer\Exception; 
+
+require 'vendor/autoload.php';
+
+if(isset($_POST['submit']))
+{
+$name =  mysqli_real_escape_string($con,$_POST['name']);
+$email = mysqli_real_escape_string($con,$_POST['email']);
+$msg = mysqli_real_escape_string($con,$_POST['message']);
+
+   $insertquery = "INSERT INTO `contact`(`name`,`email`,`message`) VALUES('$name','$email','$msg')";
+
+   $iquery = mysqli_query($con,$insertquery);
+
+   if($iquery){
+    ?>
+    <script>
+        // alert("Inserted Successfully")
+    </script>
+    <?php
+   }
+   else
+   {
+    ?>
+    <script>
+        alert("Value Not Found")
+    </script>
+    <?php
+   }
+
+
+$mail = new PHPMailer(true); 
+
+try { 
+	$mail->SMTPDebug = 0;
+	$mail->isSMTP();											 
+	$mail->Host	 = 'smtp.gmail.com;';					 
+	$mail->SMTPAuth = true;							 
+	$mail->Username = 'harsalpatil512@gmail.com';				 
+    $mail->Password = 'Harshal@5670';						 
+	$mail->SMTPSecure = 'tls';							 
+	$mail->Port	 = 587;
+
+	$mail->setFrom('harsalpatil512@gmail.com', '');		 
+	$mail->addAddress('harsalpatil512@gmail.com'); 
+	$mail->addAddress('harsalpatil512@gmail.com', ''); 
+	
+	$mail->isHTML(true);								 
+	$mail->Subject = 'Subject'; 
+	$mail->Body = "Name is $name <br> Email is $email <br> Message is $msg"; 
+	$mail->AltBody = 'Body in plain text for non-HTML mail clients'; 
+	$mail->send();  
+    ?>
+        <script>
+            alert("Message Send Successfully");
+        </script>
+    <?php
+} catch (Exception $e) { 
+	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"; 
+}
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +89,6 @@
 </head>
 
 <body>
-
     <!-- Banner Section Start -->
 
     <section id="banner">
@@ -125,17 +195,17 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form>
+                <form method="post" action="">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="w-100 p-2" placeholder="Your Name...">
+                            <input type="text" name="name" class="w-100 p-2" placeholder="Your Name..." required>
                         </div>
                         <div class="col">
-                            <input type="text" class="w-100 p-2" placeholder="Your Email...">
+                            <input type="email" name="email" class="w-100 p-2" placeholder="Your Email..." required>
                         </div>
                     </div>
-                    <textarea class="w-100 p-2 mt-2" placeholder="Your Message..." rows="5" cols="50"></textarea><br />
-                    <button class="btn btn-outline-danger btn-block text-white font-weight-bold">Send</button>
+                    <textarea class="w-100 p-2 mt-2" type="text" name="message" placeholder="Your Message..." rows="5" cols="50"></textarea><br />
+                    <input class="btn btn-outline-danger btn-block text-white font-weight-bold mt-2" type="submit" name="submit" >
                 </form>
             </div>
         </div>
